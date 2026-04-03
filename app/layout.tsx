@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
+import { Orbitron } from "next/font/google";
 import "./globals.css";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.cromvent.ee"),
@@ -44,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="et">
-      <body>{children}</body>
+      <body className={orbitron.className}>{children}</body>
     </html>
   );
 }
