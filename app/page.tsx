@@ -5,20 +5,11 @@ export default function Home() {
       <section>
         <div className="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden">
           <div className="absolute inset-0 bg-black" />
-
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,180,200,0.15),transparent_60%)]" />
 
-          <img
-            src="/logo.png"
-            className="absolute opacity-10 w-[400px] rotate-[-20deg]"
-            alt=""
-          />
-
           <div className="relative z-10 max-w-3xl">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight">
-              <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                Vaikus. Tasakaal. Toimivus.
-              </span>
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              Vaikus. Tasakaal. Toimivus.
             </h1>
 
             <p className="mt-6 text-lg text-gray-400">
