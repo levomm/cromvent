@@ -21,6 +21,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import UnlockResultCard from "@/components/UnlockResultCard";
+import ToolComingSoonOverlay from "@/components/ToolComingSoonOverlay";
 
 const ROUND_DIAMETERS = [63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600];
 const VAT_RATE = 0.24;
@@ -246,8 +247,9 @@ export default function CromventIsolatsiooniKalkulaator() {
   }
 
   return (
-    <div className="min-h-screen bg-[#060606] text-zinc-100">
-      <div className="mx-auto max-w-6xl p-4 md:p-8">
+    <div className="relative">
+      <div className="pointer-events-none min-h-screen select-none bg-[#060606] text-zinc-100 opacity-15 blur-md grayscale">
+        <div className="mx-auto max-w-6xl p-4 md:p-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
@@ -643,7 +645,9 @@ export default function CromventIsolatsiooniKalkulaator() {
             </div>
           </CardContent>
         </Card>
+        </div>
       </div>
+      <ToolComingSoonOverlay description="Isolatsiooni kalkulaator on testimisel. Sisestus, tulemused ja eksport avatakse pärast viimast kontrolli." />
     </div>
   );
 }

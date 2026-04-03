@@ -10,6 +10,7 @@ import {
   Upload,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import ToolComingSoonOverlay from "@/components/ToolComingSoonOverlay";
 import UnlockResultCard from "@/components/UnlockResultCard";
 import { Button } from "@/components/ui/button";
 import {
@@ -146,8 +147,9 @@ export default function MaterialCalculatorForm() {
   }
 
   return (
-    <main className="min-h-screen bg-[#050505] px-4 py-8 text-white md:px-6 md:py-16">
-      <div className="mx-auto max-w-6xl">
+    <div className="relative">
+      <main className="pointer-events-none min-h-screen select-none bg-[#050505] px-4 py-8 text-white opacity-15 blur-md grayscale md:px-6 md:py-16">
+        <div className="mx-auto max-w-6xl">
         <div className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(0,180,200,0.16),transparent_28%),linear-gradient(135deg,#0a0a0b_0%,#111315_48%,#060606_100%)] p-6 shadow-[0_0_80px_rgba(0,0,0,0.35)] md:p-8">
           <Badge className="mb-4 border-white/10 bg-white/5 text-zinc-200">
             CROMVENT MVP
@@ -617,7 +619,9 @@ export default function MaterialCalculatorForm() {
             </div>
           </div>
         ) : null}
-      </div>
-    </main>
+        </div>
+      </main>
+      <ToolComingSoonOverlay description="PDF materjalikalkulaator on praegu sisemises testis. Üleslaadimine, tulemused ja eksport avatakse pärast viimast kontrolli." />
+    </div>
   );
 }
