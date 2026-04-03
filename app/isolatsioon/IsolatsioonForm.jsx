@@ -2,20 +2,46 @@
 
 import { useState } from "react";
 
+const diameters = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250];
+
+const baseTable = {
+  100: 10,
+  125: 12,
+  160: 15,
+  200: 18,
+  250: 22,
+  315: 28,
+  400: 35,
+  500: 45,
+  630: 60,
+  800: 80,
+  1000: 110,
+  1250: 140,
+};
+
+const thicknessFactor = {
+  30: 1,
+  50: 1.2,
+  100: 1.6,
+};
+
+const btn = (active) =>
+  `p-3 rounded-xl border text-left transition ${
+    active
+      ? "border-cyan-400 bg-cyan-400/10"
+      : "border-white/10 hover:bg-white/5"
+  }`;
+
 export default function IsolatsioonForm() {
   const [diameter, setDiameter] = useState("125");
   const [meters, setMeters] = useState(10);
-  const [type, setType] = useState("lam50");
+  const [thickness, setThickness] = useState("50");
+  const [complexity, setComplexity] = useState("1");
 
-  const priceTable = {
-    100: { lam30: 10, lam50: 12 },
-    125: { lam30: 12, lam50: 14 },
-    160: { lam30: 15, lam50: 18 },
-    200: { lam30: 18, lam50: 22 },
-  };
-
-  const base = priceTable[diameter]?.[type] || 12;
-  const hind = Math.round(meters * base);
+  const base = baseTable[diameter] || 12;
+  const tFactor = thicknessFactor[thickness] || 1.2;
+  const cFactor = Number(complexity);
+  const hind = Math.round(meters * base * tFactor * cFactor);
 
   return (
     <main className="min-h-screen flex items-center justify-center px-6 text-white">
@@ -24,13 +50,14 @@ export default function IsolatsioonForm() {
 
         <div className="mt-8">
           <p className="text-sm text-gray-400 mb-3">Diameeter</p>
-          <div className="grid grid-cols-4 gap-2">
-            {["100", "125", "160", "200"].map((d) => (
+
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
+            {diameters.map((d) => (
               <button
                 key={d}
-                onClick={() => setDiameter(d)}
-                className={`p-3 rounded-xl border transition ${
-                  diameter === d
+                onClick={() => setDiameter(String(d))}
+                className={`p-3 rounded-xl border text-sm transition ${
+                  diameter === String(d)
                     ? "border-cyan-400 bg-cyan-400/10"
                     : "border-white/10 hover:bg-white/5"
                 }`}
@@ -45,6 +72,7 @@ export default function IsolatsioonForm() {
           <p className="text-sm text-gray-400 mb-3">Pikkus (m)</p>
           <input
             type="number"
+            min="0"
             value={meters}
             onChange={(e) => setMeters(Number(e.target.value))}
             className="w-full p-3 rounded-xl bg-black border border-white/10"
@@ -52,24 +80,46 @@ export default function IsolatsioonForm() {
         </div>
 
         <div className="mt-8">
-          <p className="text-sm text-gray-400 mb-3">Isolatsioon</p>
-          <div className="grid grid-cols-2 gap-3">
-            {[
-              { id: "lam30", label: "LAM30" },
-              { id: "lam50", label: "LAM50" },
-            ].map((t) => (
+          <p className="text-sm text-gray-400 mb-3">Paksus</p>
+
+          <div className="grid grid-cols-3 gap-2">
+            {["30", "50", "100"].map((t) => (
               <button
-                key={t.id}
-                onClick={() => setType(t.id)}
-                className={`p-4 rounded-xl border text-left transition ${
-                  type === t.id
+                key={t}
+                onClick={() => setThickness(t)}
+                className={`p-3 rounded-xl border ${
+                  thickness === t
                     ? "border-cyan-400 bg-cyan-400/10"
                     : "border-white/10 hover:bg-white/5"
                 }`}
               >
-                {t.label}
+                {t} mm
               </button>
             ))}
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <p className="text-sm text-gray-400 mb-3">Keerukus</p>
+
+          <div className="grid grid-cols-1 gap-2">
+            <button onClick={() => setComplexity("1")} className={btn(complexity === "1")}>
+              Sirge toru
+            </button>
+
+            <button
+              onClick={() => setComplexity("1.2")}
+              className={btn(complexity === "1.2")}
+            >
+              Mõõdukas (põlved)
+            </button>
+
+            <button
+              onClick={() => setComplexity("1.5")}
+              className={btn(complexity === "1.5")}
+            >
+              Keeruline süsteem
+            </button>
           </div>
         </div>
 
