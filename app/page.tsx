@@ -1,3 +1,5 @@
+import Background from "@/components/Background";
+
 export default function Home() {
   return (
     <main>
@@ -6,6 +8,7 @@ export default function Home() {
         <div className="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden">
           <div className="absolute inset-0 bg-black" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,180,200,0.15),transparent_60%)]" />
+          <Background />
 
           <div className="relative z-10 max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
