@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import UnlockResultCard from "@/components/UnlockResultCard";
 
 const ROUND_DIAMETERS = [63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600];
 const VAT_RATE = 0.24;
@@ -600,6 +601,32 @@ export default function CromventIsolatsiooniKalkulaator() {
             </div>
           </CardContent>
         </Card>
+
+        <div className="mt-6">
+          <UnlockResultCard
+            summary={[
+              {
+                label: "Kogupind",
+                value: `${round(items.length ? totals.area : results.areaM2, 2).toFixed(2)} m²`,
+              },
+              {
+                label: "Hind kokku",
+                value: formatMoney(items.length ? totals.gross : estimateGross),
+              },
+            ]}
+            quoteSubject="Isolatsiooni kalkulaatori tulemus"
+            quoteLines={[
+              "Tere!",
+              "",
+              "Soovin selle kalkulatsiooni põhjal tasulist väljundit või pakkumist.",
+              `Kanalid kokku: ${items.length || 1} rida`,
+              `Kogupind: ${round(items.length ? totals.area : results.areaM2, 2).toFixed(2)} m²`,
+              `Hinnang koos KM-ga: ${formatMoney(items.length ? totals.gross : estimateGross)}`,
+              `Ligipääs: ${selectedAccess.label}`,
+              `Materjal sees: ${includeMaterials ? "Jah" : "Ei"}`,
+            ]}
+          />
+        </div>
 
         <Card className="mt-6 rounded-[2rem] border-white/10 bg-zinc-950/70">
           <CardContent className="flex items-start gap-3 p-5 text-sm text-zinc-400">

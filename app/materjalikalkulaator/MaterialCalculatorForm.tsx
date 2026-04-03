@@ -10,6 +10,7 @@ import {
   Upload,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import UnlockResultCard from "@/components/UnlockResultCard";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -512,7 +513,28 @@ export default function MaterialCalculatorForm() {
         </div>
 
         {result ? (
-          <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1fr]">
+          <div className="mt-8 space-y-6">
+            <UnlockResultCard
+              summary={[
+                { label: "Projekt", value: result.intake.projectName },
+                {
+                  label: "PDF faile",
+                  value: String(result.intake.uploadedPdfs.length),
+                },
+              ]}
+              quoteSubject={`Materjalikalkulaatori tulemus – ${result.intake.projectName}`}
+              quoteLines={[
+                "Tere!",
+                "",
+                "Soovin selle projekti põhjal tasulist väljundit või pakkumist.",
+                `Projekt: ${result.intake.projectName}`,
+                `Projekti ID: ${result.intake.projectId}`,
+                `Analüüsi režiim: ${result.intake.analysisMode}`,
+                `Väljundi formaat: ${result.intake.outputFormat}`,
+              ]}
+            />
+
+            <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
             <Card className="border-white/10 bg-zinc-950/70">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-xl">
@@ -592,6 +614,7 @@ export default function MaterialCalculatorForm() {
                 </div>
               </CardContent>
             </Card>
+            </div>
           </div>
         ) : null}
       </div>
