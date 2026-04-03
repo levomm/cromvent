@@ -145,15 +145,16 @@ export default function MaterialCalculatorForm() {
   }
 
   return (
-    <main className="min-h-screen bg-[#050505] px-6 py-16 text-white">
+    <main className="min-h-screen bg-[#050505] px-4 py-8 text-white md:px-6 md:py-16">
       <div className="mx-auto max-w-6xl">
-        <div className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(0,180,200,0.16),transparent_28%),linear-gradient(135deg,#0a0a0b_0%,#111315_48%,#060606_100%)] p-8 shadow-[0_0_80px_rgba(0,0,0,0.35)]">
+        <div className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(0,180,200,0.16),transparent_28%),linear-gradient(135deg,#0a0a0b_0%,#111315_48%,#060606_100%)] p-6 shadow-[0_0_80px_rgba(0,0,0,0.35)] md:p-8">
           <Badge className="mb-4 border-white/10 bg-white/5 text-zinc-200">
             CROMVENT MVP
           </Badge>
+
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div>
-              <h1 className="text-3xl font-semibold tracking-tight md:text-5xl">
+              <h1 className="text-2xl font-semibold tracking-tight md:text-5xl">
                 PDF materjalikalkulaator
               </h1>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-zinc-400 md:text-base">
@@ -162,9 +163,18 @@ export default function MaterialCalculatorForm() {
                 õppeandmestiku ja API lepingu, mille külge extractor järgmises
                 etapis ühendatakse.
               </p>
+
+              <div className="mt-5 sm:hidden">
+                <a
+                  href="#tool"
+                  className="inline-flex items-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-4 py-3 text-sm font-medium text-cyan-100 transition hover:bg-cyan-400/20"
+                >
+                  Ava vorm kohe
+                </a>
+              </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="hidden gap-3 sm:grid sm:grid-cols-2">
               <Card className="border-white/10 bg-black/30">
                 <CardContent className="p-5">
                   <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">
@@ -183,9 +193,12 @@ export default function MaterialCalculatorForm() {
                   <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">
                     Eesmärk
                   </div>
-                  <div className="mt-3 text-2xl font-semibold">Parem iga projektiga</div>
+                  <div className="mt-3 text-2xl font-semibold">
+                    Parem iga projektiga
+                  </div>
                   <div className="mt-2 text-sm text-zinc-400">
-                    Sobib torustiku koondi, BOM-i ja tulevase tagasiside õppetsükli aluseks.
+                    Sobib torustiku koondi, BOM-i ja tulevase tagasiside
+                    õppetsükli aluseks.
                   </div>
                 </CardContent>
               </Card>
@@ -193,8 +206,11 @@ export default function MaterialCalculatorForm() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <Card className="border-white/10 bg-zinc-950/70">
+        <div className="mt-6 grid gap-6 lg:mt-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <Card
+            id="tool"
+            className="scroll-mt-24 border-white/10 bg-zinc-950/70"
+          >
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Upload className="h-5 w-5" />
@@ -298,9 +314,9 @@ export default function MaterialCalculatorForm() {
                       {files.map((file) => (
                         <div
                           key={`${file.name}-${file.size}`}
-                          className="flex items-center justify-between gap-4"
+                          className="flex items-center justify-between gap-3"
                         >
-                          <span className="truncate">{file.name}</span>
+                          <span className="min-w-0 truncate">{file.name}</span>
                           <span className="shrink-0 text-zinc-500">
                             {formatBytes(file.size)}
                           </span>
@@ -318,7 +334,9 @@ export default function MaterialCalculatorForm() {
                   <label className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/20 p-4">
                     <Checkbox
                       checked={includeOnninen}
-                      onCheckedChange={(checked) => setIncludeOnninen(checked === true)}
+                      onCheckedChange={(checked) =>
+                        setIncludeOnninen(checked === true)
+                      }
                       className="mt-1 border-white/20 data-[state=checked]:bg-cyan-400 data-[state=checked]:text-black"
                     />
                     <div>
@@ -344,7 +362,8 @@ export default function MaterialCalculatorForm() {
                         Salvesta õppepakett
                       </div>
                       <div className="mt-1 text-sm text-zinc-400">
-                        Hoiab alles intake&apos;i, parandused ja lõpliku kinnitatud väljundi.
+                        Hoiab alles intake&apos;i, parandused ja lõpliku kinnitatud
+                        väljundi.
                       </div>
                     </div>
                   </label>
@@ -352,7 +371,9 @@ export default function MaterialCalculatorForm() {
                   <label className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/20 p-4">
                     <Checkbox
                       checked={hasLegendFile}
-                      onCheckedChange={(checked) => setHasLegendFile(checked === true)}
+                      onCheckedChange={(checked) =>
+                        setHasLegendFile(checked === true)
+                      }
                       className="mt-1 border-white/20 data-[state=checked]:bg-cyan-400 data-[state=checked]:text-black"
                     />
                     <div>
@@ -360,7 +381,8 @@ export default function MaterialCalculatorForm() {
                         Legend on olemas
                       </div>
                       <div className="mt-1 text-sm text-zinc-400">
-                        Märgi, kui objektiga tuleb kaasa sümbolite või lühendite legend.
+                        Märgi, kui objektiga tuleb kaasa sümbolite või lühendite
+                        legend.
                       </div>
                     </div>
                   </label>
@@ -368,7 +390,9 @@ export default function MaterialCalculatorForm() {
                   <label className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/20 p-4">
                     <Checkbox
                       checked={hasMaterialSpec}
-                      onCheckedChange={(checked) => setHasMaterialSpec(checked === true)}
+                      onCheckedChange={(checked) =>
+                        setHasMaterialSpec(checked === true)
+                      }
                       className="mt-1 border-white/20 data-[state=checked]:bg-cyan-400 data-[state=checked]:text-black"
                     />
                     <div>
@@ -376,14 +400,17 @@ export default function MaterialCalculatorForm() {
                         Materjalispec olemas
                       </div>
                       <div className="mt-1 text-sm text-zinc-400">
-                        Võimaldab extractor&apos;il võrrelda joonist objekti enda spetsifikatsiooniga.
+                        Võimaldab extractor&apos;il võrrelda joonist objekti enda
+                        spetsifikatsiooniga.
                       </div>
                     </div>
                   </label>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="notes">Märkused hindajale või extractor&apos;ile</Label>
+                  <Label htmlFor="notes">
+                    Märkused hindajale või extractor&apos;ile
+                  </Label>
                   <Textarea
                     id="notes"
                     value={estimatorNotes}
@@ -402,7 +429,7 @@ export default function MaterialCalculatorForm() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="h-12 rounded-2xl bg-cyan-400 px-6 text-black hover:bg-cyan-300"
+                  className="h-12 w-full rounded-2xl bg-cyan-400 px-6 text-black hover:bg-cyan-300 sm:w-auto"
                 >
                   {isSubmitting ? (
                     <>
@@ -462,9 +489,12 @@ export default function MaterialCalculatorForm() {
                       key={entry.projectId}
                       className="rounded-2xl border border-white/10 bg-black/20 p-4"
                     >
-                      <div className="font-medium text-white">{entry.projectName}</div>
-                      <div className="mt-1 text-zinc-400">
-                        {entry.projectId} · {entry.fileCount} PDF · {entry.analysisMode}
+                      <div className="font-medium text-white">
+                        {entry.projectName}
+                      </div>
+                      <div className="mt-1 break-words text-zinc-400">
+                        {entry.projectId} · {entry.fileCount} PDF ·{" "}
+                        {entry.analysisMode}
                       </div>
                       <div className="mt-1 text-zinc-500">
                         {new Date(entry.receivedAt).toLocaleString("et-EE")}
@@ -496,7 +526,10 @@ export default function MaterialCalculatorForm() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4 text-sm text-cyan-100">
-                  Projekti ID: <span className="font-medium">{result.intake.projectId}</span>
+                  Projekti ID:{" "}
+                  <span className="break-all font-medium">
+                    {result.intake.projectId}
+                  </span>
                 </div>
 
                 <div className="space-y-2">
@@ -513,7 +546,9 @@ export default function MaterialCalculatorForm() {
                 <Separator className="bg-white/10" />
 
                 <div className="space-y-2">
-                  <div className="text-sm font-medium text-white">Järgmised sammud</div>
+                  <div className="text-sm font-medium text-white">
+                    Järgmised sammud
+                  </div>
                   {result.nextSteps.map((step) => (
                     <div key={step} className="text-sm leading-6 text-zinc-400">
                       {step}
@@ -527,7 +562,8 @@ export default function MaterialCalculatorForm() {
               <CardHeader>
                 <CardTitle className="text-xl">Õppetsükli andmemudel</CardTitle>
                 <CardDescription>
-                  Need väljad tuleks igast projektist alles hoida, et süsteem muutuks täpsemaks.
+                  Need väljad tuleks igast projektist alles hoida, et süsteem
+                  muutuks täpsemaks.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
