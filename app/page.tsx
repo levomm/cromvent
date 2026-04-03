@@ -14,40 +14,54 @@ export default function Home() {
 
           <div className="mt-8 flex justify-center">
             <a
-              href="/kontakt"
-              className="border border-white/20 px-6 py-3 rounded-xl hover:bg-white/10"
+              href="#teenused"
+              className="border border-white/20 px-6 py-3 rounded-xl hover:bg-white/10 transition"
             >
-              Küsi pakkumist
+              Vaata teenuseid
             </a>
           </div>
         </div>
       </section>
 
       {/* TEENUSED */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold">Teenused</h2>
+      <section id="teenused" className="py-32 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold">Teenused</h2>
+            <p className="mt-4 text-gray-400">
+              Täpne teostus. Kindel tulemus.
+            </p>
+          </div>
 
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
+          <div className="mt-16 grid md:grid-cols-3 gap-8">
             <a
               href="/filtrid"
-              className="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition"
+              className="group p-8 rounded-2xl border border-white/10 bg-white/[0.02] shadow-[0_0_0_rgba(255,255,255,0)] hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-1"
             >
-              Filtrite vahetus
+              <h3 className="text-xl font-semibold">Filtrite vahetus</h3>
+              <p className="mt-3 text-gray-400 text-sm">
+                Regulaarne hooldus tagab puhta õhu ja süsteemi töökindluse.
+              </p>
             </a>
 
             <a
               href="/isolatsioon"
-              className="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition"
+              className="group p-8 rounded-2xl border border-white/10 bg-white/[0.02] shadow-[0_0_0_rgba(255,255,255,0)] hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-1"
             >
-              Torustiku isolatsioon
+              <h3 className="text-xl font-semibold">Torustiku isolatsioon</h3>
+              <p className="mt-3 text-gray-400 text-sm">
+                Vähendab soojuskadu ja tagab süsteemi efektiivsuse.
+              </p>
             </a>
 
             <a
               href="/torustik"
-              className="p-8 border border-white/10 rounded-2xl hover:bg-white/5 transition"
+              className="group p-8 rounded-2xl border border-white/10 bg-white/[0.02] shadow-[0_0_0_rgba(255,255,255,0)] hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-1"
             >
-              Ventilatsiooni hooldus
+              <h3 className="text-xl font-semibold">Ventilatsiooni hooldus</h3>
+              <p className="mt-3 text-gray-400 text-sm">
+                Süsteemi kontroll ja korrastamine, et kõik toimiks nagu peab.
+              </p>
             </a>
           </div>
         </div>
