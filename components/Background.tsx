@@ -13,7 +13,7 @@ export default function Background() {
   }, [])
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-30 pointer-events-none">
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-30">
       <div className="w-full max-w-[560px] scale-110">
         {image ? (
           <ImageCanvas

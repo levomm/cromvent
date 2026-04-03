@@ -180,30 +180,28 @@ export const ImageCanvas = forwardRef<HTMLCanvasElement, ImageCanvasProps>(
         mouseTrailRef.current = mouseTrailRef.current.filter((point) => now - point.timestamp < 150)
       }
 
-      const handleMouseMove = (e: MouseEvent) => {
+      const updatePointerFromViewport = (clientX: number, clientY: number) => {
         const rect = canvas.getBoundingClientRect()
-        const newX = e.clientX - rect.left
-        const newY = e.clientY - rect.top
+        const newX = clientX - rect.left
+        const newY = clientY - rect.top
         pushTrailPoint(newX, newY)
+      }
+
+      const handleMouseMove = (e: MouseEvent) => {
+        updatePointerFromViewport(e.clientX, e.clientY)
       }
 
       const handleTouchStart = (e: TouchEvent) => {
         if (!e.touches.length) return
-        const rect = canvas.getBoundingClientRect()
         const touch = e.touches[0]
-        const newX = touch.clientX - rect.left
-        const newY = touch.clientY - rect.top
-        pushTrailPoint(newX, newY)
+        updatePointerFromViewport(touch.clientX, touch.clientY)
       }
 
       const handleTouchMove = (e: TouchEvent) => {
         e.preventDefault()
         if (!e.touches.length) return
-        const rect = canvas.getBoundingClientRect()
         const touch = e.touches[0]
-        const newX = touch.clientX - rect.left
-        const newY = touch.clientY - rect.top
-        pushTrailPoint(newX, newY)
+        updatePointerFromViewport(touch.clientX, touch.clientY)
       }
 
       const resetPointer = () => {
@@ -315,12 +313,12 @@ export const ImageCanvas = forwardRef<HTMLCanvasElement, ImageCanvasProps>(
         animationFrameRef.current = requestAnimationFrame(animate)
       }
 
-      canvas.addEventListener("mousemove", handleMouseMove)
-      canvas.addEventListener("mouseleave", handleMouseLeave)
-      canvas.addEventListener("touchstart", handleTouchStart, { passive: false })
-      canvas.addEventListener("touchmove", handleTouchMove, { passive: false })
-      canvas.addEventListener("touchend", handleTouchEnd)
-      canvas.addEventListener("touchcancel", handleTouchEnd)
+      window.addEventListener("mousemove", handleMouseMove)
+      window.addEventListener("touchstart", handleTouchStart, { passive: false })
+      window.addEventListener("touchmove", handleTouchMove, { passive: false })
+      window.addEventListener("touchend", handleTouchEnd)
+      window.addEventListener("touchcancel", handleTouchEnd)
+      window.addEventListener("mouseleave", handleMouseLeave)
 
       animate()
 
@@ -328,12 +326,12 @@ export const ImageCanvas = forwardRef<HTMLCanvasElement, ImageCanvasProps>(
         if (animationFrameRef.current) {
           cancelAnimationFrame(animationFrameRef.current)
         }
-        canvas.removeEventListener("mousemove", handleMouseMove)
-        canvas.removeEventListener("mouseleave", handleMouseLeave)
-        canvas.removeEventListener("touchstart", handleTouchStart)
-        canvas.removeEventListener("touchmove", handleTouchMove)
-        canvas.removeEventListener("touchend", handleTouchEnd)
-        canvas.removeEventListener("touchcancel", handleTouchEnd)
+        window.removeEventListener("mousemove", handleMouseMove)
+        window.removeEventListener("touchstart", handleTouchStart)
+        window.removeEventListener("touchmove", handleTouchMove)
+        window.removeEventListener("touchend", handleTouchEnd)
+        window.removeEventListener("touchcancel", handleTouchEnd)
+        window.removeEventListener("mouseleave", handleMouseLeave)
       }
     }, [
       image,
