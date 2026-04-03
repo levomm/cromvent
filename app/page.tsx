@@ -32,23 +32,23 @@ export default function Home() {
         }`}
       >
         <section>
-          <div className="relative min-h-screen flex items-center justify-center text-center px-6 overflow-hidden">
+          <div className="relative flex min-h-[72svh] items-center justify-center overflow-hidden px-6 pt-24 pb-14 text-center sm:min-h-screen sm:py-0">
             <div className="absolute inset-0 bg-black" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,180,200,0.15),transparent_60%)]" />
 
             <div className="relative z-10 max-w-3xl">
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                Vaikus. Tasakaal. Toimivus.
+              <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
+                Täpsed lahendused ventilatsioonile
               </h1>
 
-              <p className="mt-6 text-lg text-gray-400">
-                Tulemus, mis peab vastu.
+              <p className="mt-5 text-base text-gray-300 sm:mt-6 sm:text-lg">
+                Arvuta oma lahendus
               </p>
 
-              <div className="mt-8">
+              <div className="mt-7 sm:mt-8">
                 <a
                   href="#teenused"
-                  className="border border-white/20 px-6 py-3 rounded-xl hover:bg-white/10 transition"
+                  className="rounded-xl border border-white/20 px-6 py-3 transition hover:bg-white/10"
                 >
                   Vaata teenuseid
                 </a>
@@ -57,19 +57,19 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="teenused" className="py-32 px-6">
-          <div className="max-w-6xl mx-auto">
+        <section id="teenused" className="px-6 py-20 sm:py-32">
+          <div className="mx-auto max-w-6xl">
             <div className="text-center">
-              <h2 className="text-3xl md:text-4xl font-semibold">Teenused</h2>
+              <h2 className="text-3xl font-semibold md:text-4xl">Teenused</h2>
               <p className="mt-4 text-gray-400">
                 Täpne teostus. Kindel tulemus.
               </p>
             </div>
 
-            <div className="mt-16 grid gap-8 md:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-3 md:gap-8">
               <a
                 href="/filtrid"
-                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-8 shadow-[0_0_0_rgba(255,255,255,0)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]"
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-[0_0_0_rgba(255,255,255,0)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] md:p-8"
               >
                 <h3 className="text-xl font-semibold">Filtrite vahetus</h3>
                 <p className="mt-3 text-sm text-gray-400">
@@ -79,7 +79,7 @@ export default function Home() {
 
               <a
                 href="/isolatsioon"
-                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-8 shadow-[0_0_0_rgba(255,255,255,0)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]"
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-[0_0_0_rgba(255,255,255,0)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] md:p-8"
               >
                 <h3 className="text-xl font-semibold">Torustiku isolatsioon</h3>
                 <p className="mt-3 text-sm text-gray-400">
@@ -89,7 +89,7 @@ export default function Home() {
 
               <a
                 href="/torustik"
-                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-8 shadow-[0_0_0_rgba(255,255,255,0)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]"
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 shadow-[0_0_0_rgba(255,255,255,0)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] md:p-8"
               >
                 <h3 className="text-xl font-semibold">Ventilatsiooni hooldus</h3>
                 <p className="mt-3 text-sm text-gray-400">
